@@ -5,14 +5,39 @@
             <img src={{anime.image}} class="card-img-top" alt="Anime cover image">
             <div class="card-body">
                 <h5 class="card-title">{{anime.title}}</h5>
-                <a href="#" class="btn btn-primary">View</a>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#{{anime.id}}Modal">View</button>
+            </div>
+        </div>
+    </div>
+        <div class="modal fade" id="{{anime.id}}Modal" tabindex="-1" aria-labelledby="{{anime.id}}Modal" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content cust-sec-color">
+                    <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="{{anime.id}}Modal">{{anime.title}}</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-3">
+                            <img src={{anime.image}} class="img-fluid" alt="Anime cover image">
+                        </div>
+                        <div class="col-9">
+                            <h2 class="mb-1">{{anime.title}}</h2>
+                            <hr>
+                            <p class="my-1">{{anime.description}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                </div>
             </div>
         </div>
     </div>
     {% endfor %}
 </div>
 <div>
-    <form action="#" >
+    <form action="/next_page" >
         <button class="btn btn-primary mx-auto mt-3 form-control">More</button>
     </form>
 </div>
