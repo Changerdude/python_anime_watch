@@ -1,0 +1,18 @@
+<div class="row row-cols-1 row row-cols-md-2 row-cols-lg-3 g-4 mt-1">
+    {% for anime in animes %}
+    <div class="col">
+        <div class="card text-center mb-3 cust-sec-color  mx-auto" style="width: 15rem;">
+            <img src={{anime.image}} class="card-img-top" alt="Anime cover image">
+            <div class="card-body">
+                <h5 class="card-title">{{anime.title}}</h5>
+                <a href="#" class="btn btn-primary">View</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+<div>
+    <form action="#" >
+        <button class="btn btn-primary mx-auto mt-3 form-control">More</button>
+    </form>
+</div>
