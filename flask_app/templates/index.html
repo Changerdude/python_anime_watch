@@ -14,12 +14,12 @@
     </div>
     <div class="row">
         <div class="col-lg-2 d-flex flex-column flex-shrink-0 p-4 text-light cust-sec-color">
-            <div class="d-flex align-items-center mb-2 mb-sm-0 gap-3">
+            <div class="d-flex flex-column align-items-center mb-2 mb-sm-0 gap-3">
                 {% if 'uuid' in session %}
                 <img src="{{ url_for('static', filename='/img/sky-banner.jpg')}}" alt="profile icon" class="profile-icon">
-                <span>Profile Name</span>
+                <span>{{user.user_name}}</span>
                 {% else %}
-                <a class="nav-link link-light mx-auto" href="#">Login / Sign Up</a>
+                <a class="nav-link link-light mx-auto" data-bs-toggle="modal" data-bs-target="#login_signup_modal" href="#">Login / Sign Up</a>
                 {% endif %}
             </div>
             <hr>
@@ -31,18 +31,15 @@
                     <div class="offcanvas offcanvas-top text-bg-dark" tabindex="-1" id="navbarOffcanvasLg" aria-labelledby="navbarOffcanvasLgLabel">
                         <ul class="nav nav-pills flex-column text-light mb-auto" role="tablist">
                             <li class="nav-item"><a href="#home" class="nav-link link-light active mb-lg-2" data-bs-toggle="pill">Browse</a></li>
-                            <li class="nav-item"><a href="#others_lists" class="nav-link link-light mb-lg-2" data-bs-toggle="pill">Others Lists</a></li>
+                            <li class="nav-item"><a href="#public_lists" class="nav-link link-light mb-lg-2" data-bs-toggle="pill">Public Lists</a></li>
                             {% if 'uuid' in session %}
                                 <li class="nav-item"><a href="#personal" class="nav-link link-light mb-lg-2" data-bs-toggle="pill">Personal Info</a></li>
                                 <li class="nav-item"><a href="#your_series" class="nav-link link-light mb-lg-2" data-bs-toggle="pill">Your Series</a></li>
-                                <li class="nav-item"><a href="#" class="nav-link link-light">Logout</a></li>
+                                <li class="nav-item"><a href="/logout" class="nav-link link-light">Logout</a></li>
                             {% else %}
                                 <li class="nav-item"><a href="#personal" class="nav-link text-white-50 mb-lg-2 disabled" data-bs-toggle="pill">Personal Info</a></li>
                                 <li class="nav-item"><a href="#your_series" class="nav-link text-white-50 mb-lg-2 disabled" data-bs-toggle="pill">Your Series</a></li>
                                 <li class="nav-item"><a href="#" class="nav-link text-white-50 disabled">Logout</a></li>
-                            {% endif %}
-                            {% if 'uuid' in session %}
-                            {% else %}
                             {% endif %}
                         </ul>
                     </div>
@@ -54,21 +51,101 @@
                 {% include "browse.html" ignore missing %}
             </div>
             <div id="personal" class="container tab-pane fade p-4">
-                <h2>Personal</h2>
                 {% include "personal_info.html" ignore missing %}
             </div>
             <div id="your_series" class="container tab-pane fade p-4">
-                <h2>Your Series</h2>
                 {% include "your_series.html" ignore missing %}
             </div>
-            <div id="others_lists" class="container tab-pane fade p-4">
-                <h2>Others Lists</h2>
-                {% include "others_lists.html" ignore missing %}
+            <div id="public_lists" class="container tab-pane fade p-4">
+                {% include "public_lists.html" ignore missing %}
             </div>
         </div>
     </div>
-
-        
+    <div class="modal fade" id="login_signup_modal" tabindex="-1" aria-labelledby="login_signup_modal" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content cust-sec-color text-light">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="login_signup_modal">Login / Sign Up</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-6">
+                            <h2 class="mb-2 text-center">Sign Up</h2>
+                            <hr>
+                            <form action="/register" method="post" class="mx-auto p-3">
+                                <div class="mb-3">
+                                    <label for="user_name" class="form-label">User Name:</label>
+                                    <input type="text" class="form-control" name="user_name" id="user_name">
+                                    {% for message in get_flashed_messages(category_filter=["err_user_name_create"]) %}
+                                        <p class="err-msg text-danger">{{message}}</p>
+                                    {% endfor %}
+                                </div>
+                                <div class="mb-3">
+                                    <label for="first_name" class="form-label">First Name:</label>
+                                    <input type="text" class="form-control" name="first_name" id="first_name">
+                                    {% for message in get_flashed_messages(category_filter=["err_first_name_create"]) %}
+                                        <p class="err-msg text-danger">{{message}}</p>
+                                    {% endfor %}
+                                </div>
+                                <div class="mb-3">
+                                    <label for="last_name" class="form-label">Last Name:</label>
+                                    <input type="text" class="form-control" name="last_name" id="last_name">
+                                    {% for message in get_flashed_messages(category_filter=["err_last_name_create"]) %}
+                                        <p class="err-msg text-danger">{{message}}</p>
+                                    {% endfor %}
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email:</label>
+                                    <input type="text" class="form-control" name="email" id="email">
+                                    {% for message in get_flashed_messages(category_filter=["err_email_create"]) %}
+                                    <p class="err-msg text-danger">{{message}}</p>
+                                    {% endfor %}
+                                </div>
+                                <div class="mb-3">
+                                    <label for="pw" class="form-label">Password:</label>
+                                    <input type="password" class="form-control" name="pw" id="pw">
+                                    {% for message in get_flashed_messages(category_filter=["err_pw_create"]) %}
+                                        <p class="err-msg text-danger">{{message}}</p>
+                                    {% endfor %}
+                                </div>
+                                <div class="mb-3">
+                                    <label for="pw_confirm" class="form-label">Confirm Password:</label>
+                                    <input type="password" class="form-control" name="pw_confirm" id="pw_confirm">
+                                    {% for message in get_flashed_messages(category_filter=["err_pw_confirm_create"]) %}
+                                        <p class="err-msg text-danger">{{message}}</p>
+                                    {% endfor %}
+                                </div>
+                                <div class="mb-3">
+                                    <button type="submit" class="btn btn-primary">Register</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-6">
+                            <h2 class="mb-2 text-center">Login</h2>
+                            <hr>
+                            <form action="/login" method="post" class="mx-auto p-3">
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email:</label>
+                                    <input type="text" class="form-control" name="email" id="email">
+                                    {% for message in get_flashed_messages(category_filter=["err_email_login"]) %}
+                                        <p class="err-msg text-danger">{{message}}</p>
+                                    {% endfor %}
+                                    <label for="pw" class="form-label">Password:</label>
+                                    <input type="password" class="form-control" name="pw" id="pw">
+                                </div>
+                                <div class="mb-3">
+                                    <button type="submit" class="btn btn-primary">Login</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <script src="{{ url_for('static', filename='/js/script.js')}}"></script>

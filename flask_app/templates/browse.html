@@ -2,33 +2,45 @@
     {% for anime in animes %}
     <div class="col">
         <div class="card text-center mb-3 cust-sec-color  mx-auto" style="width: 15rem;">
-            <img src={{anime.image}} class="card-img-top" alt="Anime cover image">
+            <img src={{anime["image"]}} class="card-img-top" alt="Anime cover image">
             <div class="card-body">
-                <h5 class="card-title">{{anime.title}}</h5>
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#{{anime.id}}Modal">View</button>
+                <h5 class="card-title">{{anime["title"]}}</h5>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#{{anime['id']}}Modal">View</button>
             </div>
         </div>
     </div>
-        <div class="modal fade" id="{{anime.id}}Modal" tabindex="-1" aria-labelledby="{{anime.id}}Modal" aria-hidden="true">
+        <div class="modal fade" id="{{anime['id']}}Modal" tabindex="-1" aria-labelledby="{{anime['id']}}Modal" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-lg">
                 <div class="modal-content cust-sec-color">
                     <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="{{anime.id}}Modal">{{anime.title}}</h1>
+                    <h1 class="modal-title fs-5" id="{{anime['id']}}Modal">{{anime["title"]}}</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-3">
-                            <img src={{anime.image}} class="img-fluid" alt="Anime cover image">
+                            <img src={{anime["image"]}} class="img-fluid" alt="Anime cover image">
                         </div>
                         <div class="col-9">
-                            <h2 class="mb-1">{{anime.title}}</h2>
+                            <h2 class="mb-1">{{anime["title"]}}</h2>
                             <hr>
-                            <p class="my-1">{{anime.description}}</p>
+                            <p class="my-1">{{anime["description"]}}</p>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
+                    <form action="/list/watch/add" method="post">
+                        <input type="hidden" name="id" value="{{anime.id}}">
+                        <input type="hidden" name="title" value="{{anime.title}}">
+                        <input type="hidden" name="link" value="{{anime.link}}">
+                        <input type="hidden" name="description" value="{{anime.description}}">
+                        <input type="hidden" name="image" value="{{anime.image}}">
+                        {% if 'uuid' in session %}
+                            <button class="btn btn-primary" data-bs-dismiss="modal">Add to Watchlist</button>
+                        {% else %}
+                            <button class="btn btn-primary disabled" data-bs-dismiss="modal">Add to Watchlist</button>
+                        {% endif %}
+                    </form>
                     <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>

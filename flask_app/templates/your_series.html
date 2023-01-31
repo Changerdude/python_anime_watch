@@ -1,0 +1,15 @@
+{% for anime in your_list %}
+    <div class="container mb-3 p-4 cust-sec-color">
+        <div class="row">
+            <div class="col-3">
+                <img src={{anime["image"]}} class="img-fluid" alt="Anime cover image">
+            </div>
+            <div class="col-9">
+                <h2 class="mb-1">{{anime["title"]}}</h2>
+                <hr>
+                <p class="my-1">{{anime["description"]}}</p>
+            </div>
+            <a class="btn link-light" href="/list/watch/remove/{{anime.id}}">Remove from List</a>
+        </div>
+    </div>
+{% endfor %}

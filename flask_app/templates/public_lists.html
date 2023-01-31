@@ -1,0 +1,14 @@
+{% for user in public_users%}
+    <div class="container mb-3 p-4 cust-sec-color">
+        <h3>{{user.user_name}}</h3>
+        <hr>
+        <div class="row row-cols-2 row row-cols-md-4 row-cols-lg-6">
+        {% for anime in user.anime_list %}
+            <div class="col">
+                <img src={{anime["image"]}} class="img-fluid" alt="Anime cover image">
+                <span class="my-1">{{anime["title"]}}</span>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+{% endfor %}
