@@ -52,68 +52,222 @@
                 <div class="row row-cols-sm-4">
                     <div class="col mb-4">
                         <label>
+                            {% if user.user_icon == "p1.jpg" %}
+                                <input type="radio" name="user_icon" value="p1.jpg" checked>
+                            {% else %}
+                                <input type="radio" name="user_icon" value="p1.jpg">
+                            {% endif %}
+                            <img src="{{ url_for('static', filename='/img/p1.jpg')}}" alt="Option 1" class="profile-icon">
+                        </label>
+                    </div>
+                    <div class="col mb-4">
+                        <label>
                             {% if user.user_icon == "p2.jpg" %}
                                 <input type="radio" name="user_icon" value="p2.jpg" checked>
                             {% else %}
                                 <input type="radio" name="user_icon" value="p2.jpg">
                             {% endif %}
-                            <img src="{{ url_for('static', filename='/img/p2.jpg')}}" alt="Option 1" class="profile-icon">
+                            <img src="{{ url_for('static', filename='/img/p2.jpg')}}" alt="Option 2" class="profile-icon">
                         </label>
                     </div>
                     <div class="col mb-4">
                         <label>
-                            <input type="radio" name="user_icon" value="p3.jpg">
-                            <img src="{{ url_for('static', filename='/img/p3.jpg')}}" alt="Option 2" class="profile-icon">
+                            {% if user.user_icon == "p3.jpg" %}
+                                <input type="radio" name="user_icon" value="p3.jpg" checked>
+                            {% else %}
+                                <input type="radio" name="user_icon" value="p3.jpg">
+                            {% endif %}
+                            <img src="{{ url_for('static', filename='/img/p3.jpg')}}" alt="Option 3" class="profile-icon">
                         </label>
                     </div>
                     <div class="col mb-4">
                         <label>
-                            <input type="radio" name="user_icon" value="p4.jpg">
-                            <img src="{{ url_for('static', filename='/img/p4.jpg')}}" alt="Option 3" class="profile-icon">
+                            {% if user.user_icon == "p4.jpg" %}
+                                <input type="radio" name="user_icon" value="p4.jpg" checked>
+                            {% else %}
+                                <input type="radio" name="user_icon" value="p4.jpg">
+                            {% endif %}
+                            <img src="{{ url_for('static', filename='/img/p4.jpg')}}" alt="Option 4" class="profile-icon">
                         </label>
                     </div>
                     <div class="col mb-4">
                         <label>
-                            <input type="radio" name="user_icon" value="p5.jpg">
-                            <img src="{{ url_for('static', filename='/img/p5.jpg')}}" alt="Option 4" class="profile-icon">
+                            {% if user.user_icon == "p5.jpg" %}
+                                <input type="radio" name="user_icon" value="p5.jpg" checked>
+                            {% else %}
+                                <input type="radio" name="user_icon" value="p5.jpg">
+                            {% endif %}
+                            <img src="{{ url_for('static', filename='/img/p5.jpg')}}" alt="Option 5" class="profile-icon">
                         </label>
                     </div>
                     <div class="col mb-4">
                         <label>
-                            <input type="radio" name="user_icon" value="p6.jpg">
-                            <img src="{{ url_for('static', filename='/img/p6.jpg')}}" alt="Option 5" class="profile-icon">
+                            {% if user.user_icon == "p6.jpg" %}
+                                <input type="radio" name="user_icon" value="p6.jpg" checked>
+                            {% else %}
+                                <input type="radio" name="user_icon" value="p6.jpg">
+                            {% endif %}
+                            <img src="{{ url_for('static', filename='/img/p6.jpg')}}" alt="Option 6" class="profile-icon">
                         </label>
                     </div>
                     <div class="col mb-4">
                         <label>
-                            <input type="radio" name="user_icon" value="p8.jpg">
-                            <img src="{{ url_for('static', filename='/img/p8.jpg')}}" alt="Option 6" class="profile-icon">
+                            {% if user.user_icon == "p7.jpg" %}
+                                <input type="radio" name="user_icon" value="p7.jpg" checked>
+                            {% else %}
+                                <input type="radio" name="user_icon" value="p7.jpg">
+                            {% endif %}
+                            <img src="{{ url_for('static', filename='/img/p7.jpg')}}" alt="Option 7" class="profile-icon">
                         </label>
                     </div>
+                    <div class="col mb-4">
+                        <label>
+                            {% if user.user_icon == "p8.jpg" %}
+                                <input type="radio" name="user_icon" value="p8.jpg" checked>
+                            {% else %}
+                                <input type="radio" name="user_icon" value="p8.jpg">
+                            {% endif %}
+                            <img src="{{ url_for('static', filename='/img/p8.jpg')}}" alt="Option 8" class="profile-icon">
+                        </label>
+                    </div>
+                    <div class="col mb-4">
+                        <label>
+                            {% if user.user_icon == "p9.jpg" %}
+                                <input type="radio" name="user_icon" value="p9.jpg" checked>
+                            {% else %}
+                                <input type="radio" name="user_icon" value="p9.jpg">
+                            {% endif %}
+                            <img src="{{ url_for('static', filename='/img/p9.jpg')}}" alt="Option 9" class="profile-icon">
+                        </label>
+                    </div>
+                    <div class="col mb-4">
+                        <label>
+                            {% if user.user_icon == "p10.jpg" %}
+                                <input type="radio" name="user_icon" value="p10.jpg" checked>
+                            {% else %}
+                                <input type="radio" name="user_icon" value="p10.jpg">
+                            {% endif %}
+                            <img src="{{ url_for('static', filename='/img/p10.jpg')}}" alt="Option 10" class="profile-icon">
+                        </label>
+                    </div>
+                    <div class="col mb-4">
+                        <label>
+                            {% if user.user_icon == "p11.jpg" %}
+                                <input type="radio" name="user_icon" value="p11.jpg" checked>
+                            {% else %}
+                                <input type="radio" name="user_icon" value="p11.jpg">
+                            {% endif %}
+                            <img src="{{ url_for('static', filename='/img/p11.jpg')}}" alt="Option 11" class="profile-icon">
+                        </label>
+                    </div>
+                    <div class="col mb-4">
+                        <label>
+                            {% if user.user_icon == "p12.jpg" %}
+                                <input type="radio" name="user_icon" value="p12.jpg" checked>
+                            {% else %}
+                                <input type="radio" name="user_icon" value="p12.jpg">
+                            {% endif %}
+                            <img src="{{ url_for('static', filename='/img/p12.jpg')}}" alt="Option 12" class="profile-icon">
+                        </label>
+                    </div>
+                    <div class="col mb-4">
+                        <label>
+                            {% if user.user_icon == "p13.jpg" %}
+                                <input type="radio" name="user_icon" value="p13.jpg" checked>
+                            {% else %}
+                                <input type="radio" name="user_icon" value="p13.jpg">
+                            {% endif %}
+                            <img src="{{ url_for('static', filename='/img/p13.jpg')}}" alt="Option 13" class="profile-icon">
+                        </label>
+                    </div>
+                    <div class="col mb-4">
+                        <label>
+                            {% if user.user_icon == "p14.jpg" %}
+                                <input type="radio" name="user_icon" value="p14.jpg" checked>
+                            {% else %}
+                                <input type="radio" name="user_icon" value="p14.jpg">
+                            {% endif %}
+                            <img src="{{ url_for('static', filename='/img/p14.jpg')}}" alt="Option 14" class="profile-icon">
+                        </label>
+                    </div>
+                    <div class="col mb-4">
+                        <label>
+                            {% if user.user_icon == "p15.jpg" %}
+                                <input type="radio" name="user_icon" value="p15.jpg" checked>
+                            {% else %}
+                                <input type="radio" name="user_icon" value="p15.jpg">
+                            {% endif %}
+                            <img src="{{ url_for('static', filename='/img/p15.jpg')}}" alt="Option 15" class="profile-icon">
+                        </label>
+                    </div>
+                    <div class="col mb-4">
+                        <label>
+                            {% if user.user_icon == "p16.jpg" %}
+                                <input type="radio" name="user_icon" value="p16.jpg" checked>
+                            {% else %}
+                                <input type="radio" name="user_icon" value="p16.jpg">
+                            {% endif %}
+                            <img src="{{ url_for('static', filename='/img/p16.jpg')}}" alt="Option 16" class="profile-icon">
+                        </label>
+                    </div>
+                    <div class="col mb-4">
+                        <label>
+                            {% if user.user_icon == "p17.jpg" %}
+                                <input type="radio" name="user_icon" value="p17.jpg" checked>
+                            {% else %}
+                                <input type="radio" name="user_icon" value="p17.jpg">
+                            {% endif %}
+                            <img src="{{ url_for('static', filename='/img/p17.jpg')}}" alt="Option 17" class="profile-icon">
+                        </label>
+                    </div>
+                    
                 </div>
             </div>
         </div>
         <div class="mb-3">
-            <button class="btn btn-primary form-control" >Save Updates</button>
+            <button class="btn btn-primary" >Save Updates</button>
         </div>
     </form>
     <div class="mb-3">
-        <button type="button" class="btn btn-primary mx-auto" data-bs-toggle="modal" data-bs-target="#password_modal">Change Password</button>
+        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#password_modal">Change Password</button>
     </div>
 </div>
 <div class="modal fade" id="password_modal" tabindex="-1" aria-labelledby="password_modal" aria-hidden="true">
     <div class="modal-dialog modal-md">
         <div class="modal-content cust-sec-color text-light">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="password_modal">Change Password</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-            
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
-            </div>
+            <form action="user/pw/update" method="post">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="password_modal">Change Password</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="pw_old" class="form-label">Old Password:</label>
+                        <input type="password" class="form-control" name="pw_old" id="pw_old">
+                        {% for message in get_flashed_messages(category_filter=["err_pw_change"]) %}
+                            <p class="err-msg text-danger">{{message}}</p>
+                        {% endfor %}
+                    </div>
+                    <div class="mb-3">
+                        <label for="pw_new" class="form-label">New Password:</label>
+                        <input type="password" class="form-control" name="pw_new" id="pw_new">
+                        {% for message in get_flashed_messages(category_filter=["err_pw_change"]) %}
+                            <p class="err-msg text-danger">{{message}}</p>
+                        {% endfor %}
+                    </div>
+                    <div class="mb-3">
+                        <label for="pw_new_confirm" class="form-label">Confirm New Password:</label>
+                        <input type="password" class="form-control" name="pw_new_confirm" id="pw_new_confirm">
+                        {% for message in get_flashed_messages(category_filter=["err_pw_change"]) %}
+                            <p class="err-msg text-danger">{{message}}</p>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Submit Change</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

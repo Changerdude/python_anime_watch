@@ -41,6 +41,19 @@ def update():
     User.user_update(data)
     return redirect('/')
 
+@app.route('/user/pw/update', methods=["POST"])
+def update_pw():
+    user_attempt = User.get_user({'id' : session["uuid"]})
+    if not bcrypt.check_password_hash(user_attempt.pw_hash, request.form['pw_old']) or request.form['pw_new'] != request.form['pw_new_confirm'] or not User.validate_pw(request.form['pw_new']):
+        flash("Invalid entries", "err_pw_change")
+        return redirect("/")
+    data = {
+        "id" : session["uuid"],
+        'pw_hash' : bcrypt.generate_password_hash(request.form['pw_new'])
+    }
+    User.user_update_pw(data)
+    return redirect('/')
+
 @app.route('/logout')
 def logout():
     session.pop('uuid')

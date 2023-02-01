@@ -99,9 +99,25 @@ class User:
         connectToMySQL(DATABASE).query_db( query, data )
 
     @classmethod
+    def user_update_pw(cls,data):
+        query = "UPDATE users SET pw_hash = %(pw_hash)s WHERE id = %(id)s"
+        connectToMySQL(DATABASE).query_db( query, data )
+
+    @classmethod
     def user_delete(cls,data):
         query = "DELETE FROM users WHERE id = %(id)s"
         return connectToMySQL(DATABASE).query_db( query, data )
+
+    @classmethod
+    def validate_pw(cls,pw):
+        is_valid = True
+        if len(pw) < 8:
+            flash("Need a password at least 8 characters long", "err_pw_change")
+            is_valid = False
+        elif not PW_REGEX.match(pw):
+            flash("Password needs at least one capitol and one number", "err_pw_change")
+            is_valid = False
+        return is_valid
 
     @classmethod
     def validate_registration(cls,data):
