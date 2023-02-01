@@ -28,6 +28,19 @@ def login():
     session['uuid'] = user_attempt.id
     return redirect('/')
 
+@app.route('/user/update', methods=["POST"])
+def update():
+    data = {
+        **request.form,
+        "id" : session["uuid"]
+    }
+    if "is_private" in data:
+        data["is_private"] = True
+    else:
+        data["is_private"] = False
+    User.user_update(data)
+    return redirect('/')
+
 @app.route('/logout')
 def logout():
     session.pop('uuid')

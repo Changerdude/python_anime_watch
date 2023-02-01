@@ -16,7 +16,7 @@
         <div class="col-lg-2 d-flex flex-column flex-shrink-0 p-4 text-light cust-sec-color">
             <div class="d-flex flex-column align-items-center mb-2 mb-sm-0 gap-3">
                 {% if 'uuid' in session %}
-                <img src="{{ url_for('static', filename='/img/sky-banner.jpg')}}" alt="profile icon" class="profile-icon">
+                <img src="{{ url_for('static', filename='/img/'+ user.user_icon )}}" alt="profile icon" class="profile-icon">
                 <span>{{user.user_name}}</span>
                 {% else %}
                 <a class="nav-link link-light mx-auto" data-bs-toggle="modal" data-bs-target="#login_signup_modal" href="#">Login / Sign Up</a>

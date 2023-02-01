@@ -21,6 +21,8 @@ class User:
         self.pw_hash = data['pw_hash']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
+        if not 'user_icon' in data:
+            self.user_icon = "p6.jpg"
     
     @classmethod
     def create(cls,data):
@@ -66,6 +68,9 @@ class User:
         query = "SELECT * FROM users WHERE id = %(id)s"
         result = connectToMySQL(DATABASE).query_db( query, data )
         user = cls(result[0])
+        if user.user_icon == None:
+            user.user_icon = "p6.jpg"
+        print(user.user_icon)
         anime_query = "SELECT * FROM animes WHERE id IN( SELECT anime_id FROM anime_lists WHERE user_id = %(id)s) ORDER BY title"
         anime_results = connectToMySQL(DATABASE).query_db( anime_query , data )
         for anime in anime_results:
