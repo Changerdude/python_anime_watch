@@ -49,7 +49,6 @@ class User:
     def get_public_users(cls):
         query = "SELECT * FROM users WHERE NOT is_private ORDER BY user_name"
         results = connectToMySQL(DATABASE).query_db( query )
-        print(results)
         users = []
         for user in results:
             user = cls(user)
@@ -70,7 +69,6 @@ class User:
         user = cls(result[0])
         if user.user_icon == None:
             user.user_icon = "p6.jpg"
-        print(user.user_icon)
         anime_query = "SELECT * FROM animes WHERE id IN( SELECT anime_id FROM anime_lists WHERE user_id = %(id)s) ORDER BY title"
         anime_results = connectToMySQL(DATABASE).query_db( anime_query , data )
         for anime in anime_results:
